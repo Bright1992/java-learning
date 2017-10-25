@@ -1,5 +1,7 @@
 package CH11;
 
+import com.sun.xml.internal.ws.api.server.Adapter;
+
 import javax.naming.LinkLoopException;
 import java.util.*;
 
@@ -15,6 +17,7 @@ public class ContainerTest {
         //两种addAll
         al.addAll(Arrays.asList(array));
         ll = new LinkedList<Integer>(Arrays.<Integer>asList(1, 4));  //显示类型参数说明
+//        Arrays.asList(1,4).removeAll(Arrays.asList(1));     //UnsupportedOperation
         System.out.println(al);
         al=Arrays.asList(array);        //1. 返回类型不是ArrayList。2. 对al的改变会影响array
         Collections.shuffle(al);
@@ -32,6 +35,7 @@ public class ContainerTest {
         LinkedList<Integer> lll = (LinkedList<Integer>) ll;
         System.out.println(lll.poll()); //=queue.pop()
         System.out.println(lll.peek()); //=queue.front(), stack.front()
+
         lll.peekLast(); //=queue.back()
         lll.add(5); //=queue.push_back(), addLast()
         lll.pop();  //=stack.pop()
@@ -47,7 +51,6 @@ public class ContainerTest {
         Queue<Integer> pq = new PriorityQueue<Integer>();   //PriorityQueue是Queue的子类
 
         Random r = new Random(57);
-
         Set<Integer> hs = new HashSet<Integer>(Arrays.<Integer>asList(4,6,3,7,8,1,0,4));   //无顺序
         Set<Integer> ts = new TreeSet<Integer>(hs);   //有顺序（默认排序）
         Set<Integer> lhs = new LinkedHashSet<Integer>(hs);    //使用链表维护了插入顺序
@@ -76,5 +79,7 @@ public class ContainerTest {
         lol.add((List)il.clone());
         il.set(0,0);
         System.out.println(lol.get(0).get(0));
+        String s="asdf";
+        StringBuilder sb = new StringBuilder();
     }
 }
